@@ -1,7 +1,7 @@
 import "./QuoteComponent.css"
 import React, { useState, useEffect } from "react";
 
-export default function QuoteComponent(){
+export default function QuoteComponent({todayDate, setTodayDate}){
 
     {/* 
         todayDate
@@ -12,8 +12,8 @@ export default function QuoteComponent(){
     const [quote, setQuote] = useState();
     const [source, setSource] = useState();
     const [sourceLink, setSourceLink] = useState();
-    const [todayDate, setTodayDate] = useState();
 
+    // Get Todays date
     useEffect(() => {
         const today = new Date()
         const year = today.getFullYear();
@@ -22,39 +22,42 @@ export default function QuoteComponent(){
 
         const formattedDate = `${month}/${day}/${year}`;
         setTodayDate(formattedDate)
-    }, [])
+    })
+
+    // Check if items exist in localStorage
+    useEffect(() => {
+        console.log(todayDate);
+
+        // Check todayDate local storage. If absent, assign empty string
+        if ( !localStorage.getItem("todayDate") || !localStorage.getItem("number") || !localStorage.getItem("usedNumbers") ){
+            localStorage.setItem("todayDate", JSON.stringify(todayDate));
+            localStorage.setItem("number", JSON.stringify([1]));
+            localStorage.setItem("usedNumbers", 0);
+
+            console.log("1st if. Doesn't exist")
+            fetchRandom();
+            displayQuote();
+        }
+
+        else {
+            console.log("Items in localStorage exist...")
+        }
+    })
 
     useEffect(() => {
-        if (todayDate) {
-            // Check todayDate local storage. If absent, assign empty string
-            if (!localStorage.getItem("todayDate")) {
-                localStorage.setItem("todayDate", "");
-                console.log("1st if")
-            }
+        
+        // Check if todayDate local storage is the same as todays date
+        if (localStorage.getItem("todayDate") === JSON.stringify(todayDate)){
+            console.log("2nd If");
+            displayQuote();
+        } 
 
-            // Check todayDate local storage. If empty string, assign todayDate
-            if (localStorage.getItem("todayDate") === ""){
-                localStorage.setItem("todayDate", JSON.stringify(todayDate));
-                // Fetches random. Checks if in storedNumber, if so gets another, if not store number.
-                console.log("2nd If")
-                fetchRandom();
-                displayQuote();
-            }
-
-            // Check if todayDate local storage is the same as todays date
-            if (localStorage.getItem("todayDate") === JSON.stringify(todayDate)){
-                console.log("3rd If");
-                fetchRandom();
-                displayQuote();
-            }
-
-            // Check if todayDate local storage is before the same as todays date
-            if (isPreviousDay() === true){
-                console.log("4th If")
-                recyclePrev();
-            }
+        // Check if todayDate local storage is before the same as todays date
+        if (isPreviousDay() === true){
+            console.log("3rd If")
+            recyclePrev();
         }
-    }, [todayDate])
+    })
 
     function isPreviousDay() {
         const prevDayStr = localStorage.getItem("todayDate");
@@ -71,11 +74,29 @@ export default function QuoteComponent(){
     }
 
     function fetchRandom() {
-        console.log("Random fetched")
+        {/* 
+        console.log("Random fetched");
+        let randomIndex = "";
+        let randomQuoteChoice = 0;
+        let quoteText = "";
+        let quoteSource = "";
+        let quoteSourceLink = "";
+        let quoteNumber = 0;
+        
+
+        fetch("./quotes.json")
+            .then(response => response.json())
+            .then(fetchedData => {
+                randomIndex = Math.floor(Math.random() * fetchedData.length);
+                randomQuoteChoice = fetchedData[randomIndex];
+            })
+        */}
+
+        console.log("Fetching...")
     }
 
     function displayQuote() {
-        console.log("Display quote");
+        console.log("Displaying quote...");
     }
 
     function recyclePrev() {

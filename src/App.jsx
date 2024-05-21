@@ -11,18 +11,20 @@ export default function App() {
   */}
 
   const [darkMode, setDarkMode] = useState();
+  const [todayDate, setTodayDate] = useState();
 
   {/* 
-    useEffect(() => {
+  useEffect(() => {
     localStorage.clear();
   })
   */}
+
 
   return (
   <div className="h-screen flex flex-row">
     
     <div className="QuoteSide w-2/3 bg-blue-600">
-      <QuoteComponent />
+      <QuoteComponent todayDate={todayDate} setTodayDate={setTodayDate}/>
     </div>
 
     <div className="DhikrSide w-1/3 bg-red-600">
