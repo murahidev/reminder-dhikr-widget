@@ -12,26 +12,11 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState();
 
-  // Check if local storage fields exist, if not, create them
-  useEffect(() => {
-    const checkLocalStorage = () =>{
-      if (!localStorage.getItem("todayDate")){
-        localStorage.setItem("todayDate", null);
-      }
-
-      if (!localStorage.getItem("number")){
-        localStorage.setItem("number", null);
-      }
-
-      if (!localStorage.getItem("usedNumbers")){
-        localStorage.setItem("usedNumbers", null);
-      }
-
-      console.log("test")
-    }
-
-    checkLocalStorage();
+  {/* 
+    useEffect(() => {
+    localStorage.clear();
   })
+  */}
 
   return (
   <div className="h-screen flex flex-row">
