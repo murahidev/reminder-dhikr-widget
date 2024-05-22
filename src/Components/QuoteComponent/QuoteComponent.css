@@ -27,11 +27,13 @@
     font-size: clamp(5px, 8vw, 20px);
     font-size: clamp(5px, 7vh, 20px);
     font-family: "Atkinson Hyperlegible", sans-serif;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .Link {
     margin: 2vw;
-    font-size: clamp(10px, 3vw, 20px);
+    font-size: clamp(10px, 2.5vw, 20px);
     font-family: "Atkinson Hyperlegible", sans-serif;
+    cursor: pointer;
+    
 }

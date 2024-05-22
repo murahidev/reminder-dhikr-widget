@@ -1,0 +1,11 @@
+.Dhikrt {
+    display: flex;
+    transform: translateX(-50%); /* Center the text */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .Dhikr span {
+    transform-origin: 50% 50%; /* Set origin to center */
+    transform: rotate(-0.1deg) translateX(7px); /* Increase rotation and spacing */
+  }
+  
