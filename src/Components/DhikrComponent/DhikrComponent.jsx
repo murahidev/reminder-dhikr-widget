@@ -1,8 +1,8 @@
 // src/DhikrComponent.js
 import React, { useState, useEffect } from "react";
-import CurvedText from "./CurvedText";
+import ReactCurvedText from "react-curved-text";
 
-export default function DhikrComponent() {
+export default function DhikrComponent({darkMode}) {
     const [containerSize, setContainerSize] = useState({
         width: window.innerWidth * 0.5,
         height: window.innerHeight * 0.5
@@ -36,17 +36,9 @@ export default function DhikrComponent() {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="relative">
-                <CurvedText 
-                    text="DHIKR"
-                    radiusX={containerSize.width / 2}
-                    radiusY={containerSize.height / 4}
-                    cx={containerSize.width / 2}
-                    cy={containerSize.height / 3}
-                    fontSize="6vw"
-                />
-
+                
                 <button
-                    className="rounded-full bg-white px-6 py-3 text-black hover:bg-gray-200 transition duration-300"
+                    className={`rounded-full px-6 py-3 transition duration-300 ${darkMode ? "bg-white text-black hover:bg-gray-50" : "bg-black text-white hover:bg-gray-990"}`}
                     style={{ width: containerSize.width * 0.275, height: containerSize.width * 0.275 }}
                     onClick={incrementCount}
                 >

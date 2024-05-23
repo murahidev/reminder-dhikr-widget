@@ -1,11 +1,12 @@
 import "./QuoteComponent.css"
 import React, { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FiSun, FiMoon } from "react-icons/fi";
 
-export default function QuoteComponent({ todayDate, setTodayDate }) {
+export default function QuoteComponent({ todayDate, setTodayDate, darkMode, setDarkMode }) {
     
     const [quote, setQuote] = useState('');
-    const [source, setSource] = useState('');
+    const [source, setSource] = useState("");
     const [sourceLink, setSourceLink] = useState('');
     const [number, setNumber] = useState(null);
 
@@ -48,7 +49,17 @@ export default function QuoteComponent({ todayDate, setTodayDate }) {
         else {
             console.log("Items in localStorage exist...");
         }
-    }, [setTodayDate]);
+
+        if (!localStorage.getItem("darkMode")){
+            localStorage.setItem("darkMode", false);
+            setDarkMode(false);
+        }
+
+        else {
+            const tfVal = localStorage.getItem("darkMode");
+            setDarkMode(tfVal);
+        }
+    }, [setTodayDate, setDarkMode]);
 
     useEffect(() => {
         if (!todayDate) return; // Wait until todayDate is set
@@ -113,6 +124,13 @@ export default function QuoteComponent({ todayDate, setTodayDate }) {
         window.open(sourceLink, "_blank");
     }
 
+    function handleLightToggle(){
+        const newDarkMode = !darkMode;
+        localStorage.setItem("darkMode", newDarkMode);
+        setDarkMode(newDarkMode);
+        console.log(localStorage.getItem("darkMode"));
+    }
+
     return (
         <div className="h-screen flex flex-col">
             <div className="h-4/5 text-left text-wrap flex items-center overflow-x-hidden overflow-y-hidden">
@@ -124,6 +142,13 @@ export default function QuoteComponent({ todayDate, setTodayDate }) {
                     onClick={handleSrcClick}
                 >
                     <p className="Link"> {source} </p>
+                </button>
+
+                <button
+                    onClick={handleLightToggle}
+                    className={`MoonSunButton ${darkMode ? "hover:bg-gray-900" : "hover:bg-gray-50"} rounded`}
+                >
+                    {darkMode ? <FiSun /> : <FiMoon />}
                 </button>
             </div>
         </div>

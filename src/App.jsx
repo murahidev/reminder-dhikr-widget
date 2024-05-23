@@ -19,18 +19,34 @@ export default function App() {
 
  
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem("number");
+    localStorage.removeItem("usedNumbers");
+    localStorage.removeItem("todayDate");
+  })
+
+  useEffect(() => {
+    const checkColorMode = localStorage.getItem("darkMode");
+    const parsedVval = JSON.parse(checkColorMode);
+
+    setDarkMode(parsedVval);
   })
 
   return (
-  <div className="h-screen flex flex-row bg-black text-white">
+  <div className={`h-screen flex flex-row ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}>
     
     <div className="QuoteSide w-2/3">
-      <QuoteComponent todayDate={todayDate} setTodayDate={setTodayDate}/>
+      <QuoteComponent 
+        todayDate={todayDate} 
+        setTodayDate={setTodayDate}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
     </div>
 
     <div className="DhikrSide w-1/3">
-      <DhikrComponent />
+      <DhikrComponent 
+        darkMode={darkMode}
+      />
     </div>
 
   </div>
