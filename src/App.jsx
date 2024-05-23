@@ -8,6 +8,8 @@ export default function App() {
     todayDate
     number
     usedNumbers
+    To GitPages: npm run deploy
+    Run Vite: npm run dev
   */}
 
   const [darkMode, setDarkMode] = useState();

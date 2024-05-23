@@ -24,7 +24,7 @@ export default function QuoteComponent({ todayDate, setTodayDate, darkMode, setD
 
 
             // Fetch random and store in number and usedNumbers
-            fetch("/quotes.json")
+            fetch(`${process.env.PUBLIC_URL}/quotes.json`)
                 .then(response => response.json())
                 .then(data => {
                     const randomIndex = Math.floor(Math.random() * data.length);
