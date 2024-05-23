@@ -18,13 +18,14 @@ export default function QuoteComponent({ todayDate, setTodayDate, darkMode, setD
         const formattedDate = `${month}/${day}/${year}`;
 
         setTodayDate(formattedDate);
+        const baseURL = "https://murahidev.github.io/reminder-dhikr-widget";
 
         if (!localStorage.getItem("todayDate") || !localStorage.getItem("number") || !localStorage.getItem("usedNumbers")) {
             console.log("1st if. Doesn't exist");
 
 
             // Fetch random and store in number and usedNumbers
-            fetch(`${process.env.PUBLIC_URL}/quotes.json`)
+            fetch(`${baseURL}/quotes.json`)
                 .then(response => response.json())
                 .then(data => {
                     const randomIndex = Math.floor(Math.random() * data.length);
