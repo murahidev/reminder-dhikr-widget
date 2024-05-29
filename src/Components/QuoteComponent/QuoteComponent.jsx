@@ -53,6 +53,10 @@ export default function QuoteComponent({ darkMode, setDarkMode }) {
                 >
                     {darkMode ? <FiSun /> : <FiMoon />}
                 </button>
+
+                <button>
+                    <a href="https://www.instagram.com/prodmuslim_/">Created by @prodmuslim_</a>
+                </button>
             </div>
         </div>
     );
