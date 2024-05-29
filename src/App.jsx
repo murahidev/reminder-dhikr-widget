@@ -1,3 +1,4 @@
+import "./app.css"
 import React, { useEffect, useState } from "react"
 import DhikrComponent from "./Components/DhikrComponent/DhikrComponent"
 import QuoteComponent from "./Components/QuoteComponent/QuoteComponent"
@@ -34,7 +35,7 @@ export default function App() {
   })
 
   return (
-  <div className={`h-screen flex flex-row ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}>
+  <div className={`h-screen flex flex-row ${darkMode ? 'dark-mode' : 'light-mode'} rounded-lg`}>
     
     <div className="QuoteSide w-2/3">
       <QuoteComponent 
