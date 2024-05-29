@@ -55,7 +55,7 @@ export default function QuoteComponent({ darkMode, setDarkMode }) {
                 </button>
 
                 <button>
-                    <a href="https://www.instagram.com/prodmuslim_/">Created by @prodmuslim_</a>
+                    <a className="Ref" href="https://www.instagram.com/prodmuslim_/">Created by @prodmuslim_</a>
                 </button>
             </div>
         </div>
