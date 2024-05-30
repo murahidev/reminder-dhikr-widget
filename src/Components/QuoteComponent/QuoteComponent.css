@@ -39,11 +39,11 @@
 }
 
 .MoonSunButton {
-    padding: 2vh;
+    margin: 2.5vw;
 }
 
 .Ref {
-    padding: 2vh;
+    margin: 2vw;
     font-size: clamp(10px, 2.5vw, 20px);
     font-family: "Atkinson Hyperlegible", sans-serif;
 }

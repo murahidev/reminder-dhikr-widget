@@ -43,10 +43,6 @@ export default function QuoteComponent({ darkMode, setDarkMode }) {
             </div>
 
             <div className="h-1/5 flex items-center underline">
-                <button onClick={handleSrcClick}>
-                    <p className="Link">{source}</p>
-                </button>
-
                 <button
                     onClick={handleLightToggle}
                     className={`MoonSunButton ${darkMode ? "hover:bg-gray-900" : "hover:bg-gray-50"} rounded`}
@@ -54,8 +50,12 @@ export default function QuoteComponent({ darkMode, setDarkMode }) {
                     {darkMode ? <FiSun /> : <FiMoon />}
                 </button>
 
+                <button onClick={handleSrcClick}>
+                    <p className="Link">{source}</p>
+                </button>
+
                 <button>
-                    <a className="Ref" href="https://www.instagram.com/prodmuslim_/">Created by @prodmuslim_</a>
+                    <a className="Ref" href="https://www.instagram.com/prodmuslim_/" target="_blank">Created by @prodmuslim_</a>
                 </button>
             </div>
         </div>
